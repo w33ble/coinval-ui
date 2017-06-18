@@ -12,7 +12,8 @@
     "serve": "serve dist --single",
     "test": "cross-env NODE_ENV=test ava",
     "lint": "eslint src/**/*.{js,vue} test/**/*.js",
-    "lint:fix": "eslint --fix src/**/*.{js,vue} test/**/*.js"
+    "lint:fix": "eslint --fix src/**/*.{js,vue} test/**/*.js",
+    "precommit": "lint-staged"
   },
   "author": [
     "Joe Fleming <github.com/w33ble>"
@@ -21,6 +22,9 @@
     "presets": [
       "vue-app"
     ]
+  },
+  "lint-staged": {
+    "*.{js,vue}": ["eslint --fix", "git add"]
   },
   "ava": {
     "babel": "inherit",
@@ -42,6 +46,8 @@
     "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.0.1",
     "eslint-plugin-vue": "^2.0.1",
+    "husky": "^0.13.4",
+    "lint-staged": "^4.0.0",
     "poi": "^8.0.0",
     "poi-preset-bundle-report": "^1.0.1",
     "poi-preset-offline": "^8.0.0",
