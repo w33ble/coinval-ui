@@ -1,7 +1,7 @@
-import runtime from 'offline-plugin/runtime'
+import runtime from 'offline-plugin/runtime';
 
 runtime.install({
   onUpdateReady() {
-    runtime.applyUpdate()
-  }
-})
+    runtime.applyUpdate();
+  },
+});

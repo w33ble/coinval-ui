@@ -10,16 +10,18 @@
     "build": "poi build",
     "report": "poi build --bundle-report",
     "serve": "serve dist --single",
-    "test": "cross-env NODE_ENV=test ava"
+    "test": "cross-env NODE_ENV=test ava",
+    "lint": "eslint src/**/*.{js,vue} test/**/*.js",
+    "lint:fix": "eslint --fix src/**/*.{js,vue} test/**/*.js"
   },
+  "author": [
+    "Joe Fleming <github.com/w33ble>"
+  ],
   "babel": {
     "presets": [
       "vue-app"
     ]
   },
-  "author": [
-    "Joe Fleming <github.com/w33ble>"
-  ],
   "ava": {
     "babel": "inherit",
     "require": [
@@ -33,6 +35,13 @@
     "ava": "^0.19.1",
     "browser-env": "^2.0.31",
     "cross-env": "^5.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-vue": "^2.0.2",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.1",
+    "eslint-plugin-vue": "^2.0.1",
     "poi": "^8.0.0",
     "poi-preset-bundle-report": "^1.0.1",
     "poi-preset-offline": "^8.0.0",

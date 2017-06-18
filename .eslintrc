@@ -1,0 +1,6 @@
+extends:
+  - vue
+  - airbnb
+
+plugins:
+  - vue
