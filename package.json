@@ -24,7 +24,10 @@
     ]
   },
   "lint-staged": {
-    "*.{js,vue}": ["eslint --fix", "git add"]
+    "*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "ava": {
     "babel": "inherit",
@@ -33,6 +36,8 @@
     ]
   },
   "dependencies": {
+    "buefy": "^0.4.0",
+    "font-awesome": "^4.7.0",
     "offline-plugin": "^4.8.0"
   },
   "devDependencies": {
@@ -48,12 +53,14 @@
     "eslint-plugin-vue": "^2.0.1",
     "husky": "^0.13.4",
     "lint-staged": "^4.0.0",
+    "node-sass": "^4.5.3",
     "poi": "^8.0.0",
     "poi-preset-bundle-report": "^1.0.1",
     "poi-preset-offline": "^8.0.0",
     "require-extension-hooks": "^0.2.0",
     "require-extension-hooks-babel": "^0.1.1",
     "require-extension-hooks-vue": "^0.3.1",
+    "sass-loader": "^6.0.6",
     "serve": "^3.1.0"
   }
 }
