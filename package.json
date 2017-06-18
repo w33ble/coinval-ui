@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "name": "coinval-ui",
+  "productName": "coinval",
+  "description": "coinval interface",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "poi",
+    "build": "poi build",
+    "report": "poi build --bundle-report",
+    "serve": "serve dist --single",
+    "test": "cross-env NODE_ENV=test ava"
+  },
+  "babel": {
+    "presets": [
+      "vue-app"
+    ]
+  },
+  "author": [
+    "Joe Fleming <github.com/w33ble>"
+  ],
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "./test/helpers/setup.js"
+    ]
+  },
+  "dependencies": {
+    "offline-plugin": "^4.8.0"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "browser-env": "^2.0.31",
+    "cross-env": "^5.0.0",
+    "poi": "^8.0.0",
+    "poi-preset-bundle-report": "^1.0.1",
+    "poi-preset-offline": "^8.0.0",
+    "require-extension-hooks": "^0.2.0",
+    "require-extension-hooks-babel": "^0.1.1",
+    "require-extension-hooks-vue": "^0.3.1",
+    "serve": "^3.1.0"
+  }
+}
