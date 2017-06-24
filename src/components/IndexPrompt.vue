@@ -1,5 +1,6 @@
 <template>
-  <div class="content">
+  <div class="content columns">
+    <div class="column is-half is-offset-3">
       <p>To load your coin dashboard, enter your Dashboard ID below.</p>
 
       <p>If you would like to create a new dashboard, click Create at the top.</p>
@@ -20,6 +21,7 @@
           <button class="button is-primary">Load Dashboard</button>
         </b-field>
       </form>
+    </div>
   </div>
 </template>
 

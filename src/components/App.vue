@@ -2,7 +2,7 @@
   <div id="app">
     <top-navigation />
     <section class="section">
-      <create-dashboard />
+      <dashboard />
     </section>
   </div>
 </template>
@@ -11,6 +11,7 @@
   import TopNavigation from './TopNavigation.vue';
   import IndexPrompt from './IndexPrompt.vue';
   import CreateDashboard from './CreateDashboard.vue';
+  import Dashboard from './Dashboard.vue';
 
   export default {
     name: 'app',
@@ -18,6 +19,7 @@
       TopNavigation,
       IndexPrompt,
       CreateDashboard,
+      Dashboard,
     },
     data: () => ({
       checkbox: true,
@@ -41,6 +43,18 @@
   $light: #F0F0F0;
   $link: $primary;
   $link-visited: $secondary;
+
+  // custom sizing
+  $tablet: 768px;
+  // Responsiveness
+  // 1152, 1344, and 1536 have been chosen because they are divisible by both 12 and 16
+  $tablet: 768px !default
+  // 1152px container + 40px
+  $desktop: 1192px !default
+  // 1152px container + 40
+  $widescreen: 1384px !default
+  // 1536px container + 40
+  $fullhd: 1576px !default
 
   // Setup $colors to use as bulma classes (e.g. 'is-twitter')
   $colors: (white: ($white, $black), black: ($black, $white), light: ($light, $light-invert), dark: ($dark, $dark-invert), primary: ($primary, $primary-invert), secondary: ($secondary, $secondary-invert), info: ($info, $info-invert), success: ($success, $success-invert), warning: ($warning, $warning-invert), danger: ($danger, $danger-invert));

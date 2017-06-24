@@ -36,7 +36,7 @@
     ]
   },
   "dependencies": {
-    "buefy": "^0.4.0",
+    "buefy": "^0.4.2",
     "font-awesome": "^4.7.0",
     "offline-plugin": "^4.8.0"
   },
