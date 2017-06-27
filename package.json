@@ -11,8 +11,8 @@
     "report": "poi build --bundle-report",
     "serve": "serve dist --single",
     "test": "cross-env NODE_ENV=test ava",
-    "lint": "eslint src/**/*.{js,vue} test/**/*.js",
-    "lint:fix": "eslint --fix src/**/*.{js,vue} test/**/*.js",
+    "lint": "eslint *.js \"src/**/*.{js,vue}\" \"test/**/*.js\"",
+    "lint:fix": "eslint --fix *.js \"src/**/*.{js,vue}\" \"test/**/*.js\"",
     "precommit": "lint-staged"
   },
   "author": [
