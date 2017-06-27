@@ -8,6 +8,6 @@ module.exports = (data) => {
   return cw.price(data.cointype, 'usd', 'poloniex')
   .then(({ price }) => Object.assign({
     price,
-    value: price * data.count,
+    value: Math.round(price * data.count * 100) / 100,
   }, data));
 };

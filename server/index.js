@@ -16,11 +16,12 @@ router.render = (req, res) => {
   .then(data => (isArray ? data : data[0]))
   .then((data) => {
     res.jsonp(data);
-  });
+  })
+  .catch(err => res.send(err));
 };
 
 server.use(router);
 
 server.listen(port, () => {
-  console.log(`JSON Server is running on port ${port}`);
+  console.log(`server is running on port ${port}`);
 });
