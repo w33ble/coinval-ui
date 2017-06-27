@@ -14,12 +14,16 @@
           </div>
         </div>
 
-        <div v-if="!loading && !holdings.length">
+        <div v-if="!error && !loading && !holdings.length">
           No holdings found
         </div>
 
         <div v-if="loading">
           Loading...
+        </div>
+
+        <div v-if="error">
+          Failed: {{ error }}
         </div>
       </div>
 
@@ -38,6 +42,7 @@
       holdings: [],
       loading: true,
       timer: false,
+      error: false,
     }),
     created() {
       this.fetch().then(() => {
@@ -50,10 +55,15 @@
     methods: {
       fetch() {
         this.loading = true;
+        this.error = false;
 
         return getHoldings().then((holdings) => {
           this.loading = false;
           this.holdings = holdings;
+        })
+        .catch((err) => {
+          this.loading = false;
+          this.error = err.message;
         });
       },
       doEdit(holding) {

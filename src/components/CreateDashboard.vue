@@ -60,8 +60,8 @@ export default {
       if (this.errors.title || this.errors.pin) return;
 
       // TODO: create dashboard
-      console.log(`Create: ${this.title}`);
-      if (this.isPrivate) console.log(`With PIN: ${this.pin}`);
+      if (this.isPrivate) this.$snackbar.open(`Create: ${this.title} with PIN ${this.pin}`);
+      else this.$snackbar.open(`Create: ${this.title}`);
     },
   },
 };
