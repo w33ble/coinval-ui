@@ -15,6 +15,11 @@
       "name": "Exodus",
       "cointype": "btc",
       "count": 0.013764
+    }, {
+      "id": 4,
+      "name": "Monero Wallet",
+      "cointype": "xmr",
+      "count": 0.277
     }
   ]
 }
