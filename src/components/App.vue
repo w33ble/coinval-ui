@@ -1,25 +1,17 @@
 <template>
   <div id="app">
     <top-navigation />
-    <section class="section">
-      <dashboard />
-    </section>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import TopNavigation from './TopNavigation.vue';
-  import IndexPrompt from './IndexPrompt.vue';
-  import CreateDashboard from './CreateDashboard.vue';
-  import Dashboard from './Dashboard.vue';
 
   export default {
     name: 'app',
     components: {
       TopNavigation,
-      IndexPrompt,
-      CreateDashboard,
-      Dashboard,
     },
     data: () => ({
       checkbox: true,

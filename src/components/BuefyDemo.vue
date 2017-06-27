@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <section class="container">
+  <section class="section">
+    <div class="container">
       <h1 class="title">Buefy Customization Basic Setup</h1>
 
       <div class="block">
@@ -82,9 +82,8 @@
       <b-field>
         <b-input placeholder="Loading..." disabled loading></b-input>
       </b-field>
-
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>
