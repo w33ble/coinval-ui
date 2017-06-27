@@ -1,0 +1,20 @@
+{
+  "holdings": [
+    {
+      "id": 1,
+      "name": "Poloniex",
+      "cointype": "eth",
+      "count": 1.2475
+    }, {
+      "id": 2,
+      "name": "Coinbase",
+      "cointype": "ltc",
+      "count": 1.41018265
+    }, {
+      "id": 3,
+      "name": "Exodus",
+      "cointype": "btc",
+      "count": 0.013764
+    }
+  ]
+}
