@@ -39,7 +39,10 @@
         if (!this.dashboardId) this.error = 'Invalid dashboard ID';
         else {
           // TODO: load the dashboard
-          this.$snackbar.open(`Load: '${this.dashboardId}'`);
+          this.$router.push({
+            name: 'view',
+            params: { id: this.dashboardId },
+          });
           this.dashboardId = '';
           this.error = null;
         }
