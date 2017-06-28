@@ -37,6 +37,7 @@
     ]
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "buefy": "^0.4.2",
     "cryptowatch": "^0.1.0",
     "font-awesome": "^4.7.0",
