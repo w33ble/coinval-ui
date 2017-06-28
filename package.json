@@ -14,7 +14,7 @@
     "lint": "eslint *.js \"src/**/*.{js,vue}\" \"test/**/*.js\"",
     "lint:fix": "eslint --fix *.js \"src/**/*.{js,vue}\" \"test/**/*.js\"",
     "precommit": "lint-staged",
-    "server": "node server"
+    "server": "nodemon server"
   },
   "author": [
     "Joe Fleming <github.com/w33ble>"
@@ -59,6 +59,7 @@
     "husky": "^0.13.4",
     "lint-staged": "^4.0.0",
     "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
     "poi": "^8.0.0",
     "poi-preset-bundle-report": "^1.0.1",
     "poi-preset-offline": "^8.0.0",
