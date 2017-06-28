@@ -46,7 +46,7 @@
     }),
     created() {
       this.fetch().then(() => {
-        this.timer = setInterval(() => this.fetch(), 5000);
+        this.timer = setInterval(() => this.fetch(), 15000);
       });
     },
     destroyed() {
