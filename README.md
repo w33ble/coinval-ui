@@ -1,6 +1,7 @@
 # coinval-ui
 
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/w33ble/coinval-ui/master/LICENSE)
+![Project Status](https://img.shields.io/badge/status-demo-blue.svg)
 
 Interface for coinval, a cryptocoin value tracker
 
