@@ -5,7 +5,7 @@
 
         <div class="columns is-multiline">
           <div class="column is-half" v-for="holding in holdings">
-              <dashboard-card
+            <dashboard-card
               :key="holding.id"
               :holding="holding"
               @edit="doEdit"
@@ -32,18 +32,26 @@
 </template>
 
 <script>
-  import { getHoldings } from '../lib/holdings';
+  import { mapState, mapActions } from 'vuex';
   import DashboardCard from './DashboardCard.vue';
 
   export default {
     name: 'dashboard',
-    components: { DashboardCard },
+    components: {
+      DashboardCard,
+    },
     data: () => ({
-      holdings: [],
-      loading: true,
+      // holdings: [],
+      loading: false,
       timer: false,
       error: false,
     }),
+    computed: {
+      // holdings() {
+      //   return this.$store.state.holdings;
+      // },
+      ...mapState(['holdings']),
+    },
     created() {
       this.fetch().then(() => {
         this.timer = setInterval(() => this.fetch(), 15000);
@@ -53,14 +61,19 @@
       if (this.timer) clearInterval(this.timer);
     },
     methods: {
+      ...mapActions(['updateHoldings']),
       fetch() {
         this.loading = true;
         this.error = false;
 
-        return getHoldings().then((holdings) => {
+        return this.updateHoldings()
+        .then(() => {
           this.loading = false;
-          this.holdings = holdings;
         })
+        // return getHoldings().then((holdings) => {
+        //   this.loading = false;
+        //   this.holdings = holdings;
+        // })
         .catch((err) => {
           this.loading = false;
           this.error = err.message;
