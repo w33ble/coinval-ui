@@ -82,7 +82,6 @@
             title: this.title,
             isPrivate: false,
             timestamp: (new Date()).getTime(),
-            holdings: [],
           })
           .then(() => {
             this.$router.push({
