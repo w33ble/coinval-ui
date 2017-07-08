@@ -2,7 +2,7 @@
   <div class="card">
     <header class="card-header">
       <p class="card-header-title">
-        {{ holding.name }} ({{ cointype }})
+        {{ holding.title }} ({{ cointype }})
       </p>
       <div class="card-header-icon">
         <b-dropdown @change="emitAction" is-bottom-left>
