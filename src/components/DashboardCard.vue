@@ -4,7 +4,7 @@
       <p class="card-header-title">
         {{ holding.title }} ({{ cointype }})
       </p>
-      <div class="card-header-icon">
+      <div class="card-header-icon" v-if="false">
         <b-dropdown @change="emitAction" is-bottom-left>
           <button class="button" slot="trigger">
             <b-icon icon="angle-down"></b-icon>
@@ -26,20 +26,10 @@
             </div>
           </div>
         </div>
-        <div class="tile is-vertical">
-          <div class="tile">
+          <div class="tile" v-if="holding.purchasePrice">
             <div class="content">
-              Gain/Loss
-            </div>
-          </div>
-          <div class="tile">
-            <div class="content">
-              Purchase Price
-            </div>
-          </div>
-          <div class="tile">
-            <div class="content">
-              Purchase Date
+              <div>Purchase Price</div>
+              <div>{{ holding.purchasePrice }}</div>
             </div>
           </div>
         </div>
