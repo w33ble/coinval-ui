@@ -1,19 +1,30 @@
 <template>
   <section class="section">
+    <add-holding-modal
+      v-if="!loading"
+      :open="addModalOpen"
+      :title="$firebaseValue(dashboard, 'title')"
+      @close="() => { addModalOpen = false; }"
+    />
+
     <div class="columns">
       <div class="column is-8-widescreen is-offset-2-widescreen">
+
+        <!-- action buttons at the top -->
         <div style="margin-bottom: 10px; text-align: right;">
-          <!-- action buttons at the top -->
           <button class="button" @click="fetchPrices">
             <b-icon icon="refresh" :class="{'fa-spin': refreshingPrice}"></b-icon>
             <span>Refresh</span>
           </button>
 
-          <button class="button" @click="doAdd">
+          <button class="button" @click="doOpenAdd">
             <b-icon icon="plus"></b-icon>
             <span>Add</span>
           </button>
         </div>
+
+        <!--  Dashboard title -->
+        <h1 class="title is-4" v-if="!loading">{{ $firebaseValue(dashboard, 'title') }}</h1>
 
         <!-- all the holdings as cards -->
         <div class="columns is-multiline" v-if="!loading">
@@ -43,10 +54,14 @@
 <script>
   import { ref } from '../lib/firebase';
   import DashboardCard from './DashboardCard.vue';
+  import AddHoldingModal from './AddHoldingModal.vue';
 
   export default {
     name: 'dashboard',
-    components: { DashboardCard },
+    components: {
+      DashboardCard,
+      AddHoldingModal,
+    },
     firebase() {
       const dashboardId = this.$route.params.id;
 
@@ -74,6 +89,7 @@
       loading: true,
       refreshingPrice: false,
       lastUpdated: null,
+      addModalOpen: false,
     }),
     methods: {
       fetchPrices() {
@@ -87,14 +103,14 @@
           this.$toast.open(`Refresh prices: ${types.join(', ')}`);
         }, 300);
       },
-      doAdd() {
-        this.$toast.open('Create holding');
+      doOpenAdd() {
+        this.addModalOpen = true;
       },
       doEdit(holding) {
-        this.$toast.open(`Edit ${holding.id}`);
+        this.$toast.open(`Edit ${holding.title}`);
       },
       doDelete(holding) {
-        this.$toast.open(`Delete ${holding.id}`);
+        this.$toast.open(`Delete ${holding.title}`);
       },
     },
   };
