@@ -8,6 +8,7 @@ const cache = {
   lastCheckTime: 0,
   prices: {},
 };
+const cacheTime = 30000; // 30 seconds
 
 // enable communication with firebase db
 admin.initializeApp(functions.config().firebase);
@@ -15,17 +16,24 @@ admin.initializeApp(functions.config().firebase);
 // create prices endpoint
 exports.prices = functions.https.onRequest((request, response) => {
   const curTime = (new Date()).getTime();
-  if (curTime - cache.lastCheckTime >= 30000) {
+  if (curTime - cache.lastCheckTime >= cacheTime) {
     console.log('cache skipped');
 
     // update the last check time
     cache.lastCheckTime = curTime;
 
     // fetch price info from api
-    cw.prices().then((res) => {
+    cw.prices()
+    .then((res) => {
+      const output = Object.assign({}, { _updated: curTime }, res);
       // cache the response
-      cache.prices = res;
-      response.send(res);
+      cache.prices = output;
+      response.send(output);
+    })
+    .catch((err) => {
+      // if there's a failure, log to console and output from cache
+      console.error(err);
+      response.send(cache.prices);
     });
   } else {
     console.log('cache hit!');
