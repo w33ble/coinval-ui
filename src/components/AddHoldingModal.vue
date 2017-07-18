@@ -79,10 +79,18 @@
         }).then(() => {
           this.loading = false;
           this.$emit('close');
+          this.resetForm();
         });
       },
       doCancel() {
         this.$emit('close');
+      },
+      resetForm() {
+        this.holdingTitle = '';
+        this.cointype = '';
+        this.count = 0;
+        this.purchasePrice = 0;
+        this.loading = false;
       },
     },
   };
