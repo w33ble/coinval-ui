@@ -15,5 +15,6 @@ export default function (currency = 'usd', exchange = 'poloniex') {
     xmr: data[`${exchange}:xmr${currency}`],
     dash: data[`${exchange}:dash${currency}`],
     xrp: data[`${exchange}:xrp${currency}`],
+    _updated: data['_updated'], // eslint-disable-line dot-notation
   }));
 }

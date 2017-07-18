@@ -65,6 +65,7 @@
     },
     mounted() {
       const interval = 35000; // 35 seconds
+      this.fetchPrices();
       this.timer = setInterval(this.fetchPrices, interval);
     },
     destroyed() {
@@ -108,7 +109,7 @@
         return coinPrices()
         .then((prices) => {
           this.refreshingPrice = false;
-          this.lastUpdated = (new Date()).toString();
+          this.lastUpdated = (new Date(prices['_updated'])).toString(); // eslint-disable-line dot-notation
 
           const updates = this.holdings.reduce((acc, holding) => {
             const path = `${holding['.key']}/value`;
