@@ -15,7 +15,10 @@ admin.initializeApp(functions.config().firebase);
 
 // create prices endpoint
 exports.prices = functions.https.onRequest((request, response) => {
+  response.setHeader('Access-Control-Allow-Origin', '*');
+
   const curTime = (new Date()).getTime();
+
   if (curTime - cache.lastCheckTime >= cacheTime) {
     console.log('cache skipped');
 
