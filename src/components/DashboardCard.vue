@@ -19,17 +19,17 @@
         <div class="tile is-7 co">
           <div class="content">
             <div class="title is-4">
-              ${{ holding.value }}
+              {{ holding.value | price }}
             </div>
             <div>
-              {{ holding.count }} Coins
+              {{ holding.count | count }} Coins
             </div>
           </div>
         </div>
           <div class="tile" v-if="holding.purchasePrice">
             <div class="content">
               <div>Purchase Price</div>
-              <div>{{ holding.purchasePrice }}</div>
+              <div>{{ holding.purchasePrice | price}}</div>
             </div>
           </div>
         </div>
@@ -52,6 +52,15 @@
     computed: {
       cointype() {
         return this.holding.cointype.toUpperCase();
+      },
+    },
+    filters: {
+      price(val) {
+        if (val == null) return '?';
+        return `$${(Math.round(val * 100) / 100).toFixed(2)}`;
+      },
+      count(val) {
+        return Number(val).toFixed(6);
       },
     },
   };
