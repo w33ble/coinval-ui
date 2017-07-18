@@ -1,5 +1,3 @@
-/* eslint no-new:0 */
-
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueFire from 'vuefire';
@@ -16,7 +14,7 @@ Vue.use(Buefy, {
   defaultIconPack: 'fa',
 });
 
-new Vue({
+export default new Vue({
   router,
   el: '#app',
   render: h => h(App),

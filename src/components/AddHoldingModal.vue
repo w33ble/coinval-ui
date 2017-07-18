@@ -17,7 +17,7 @@
             <b-field label="Coin Type">
               <b-select placeholder="Select a coin typer" v-model="cointype">
                 <option value="btc">Bitcoin - BTC</option>
-                <option value="ltc">Litecoint - LTC</option>
+                <option value="ltc">Litecoin - LTC</option>
                 <option value="eth">Ethereum - ETH</option>
                 <option value="xmr">Monero - XMR</option>
                 <option value="dash">Dash - DASH</option>
