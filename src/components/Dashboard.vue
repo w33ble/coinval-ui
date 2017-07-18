@@ -53,6 +53,7 @@
 
 <script>
   import { ref } from '../lib/firebase';
+  import coinPrices from '../lib/coin_prices';
   import DashboardCard from './DashboardCard.vue';
   import AddHoldingModal from './AddHoldingModal.vue';
 
@@ -93,15 +94,28 @@
     }),
     methods: {
       fetchPrices() {
-        const unique = (value, index, self) => self.indexOf(value) === index;
-        const types = this.holdings.map(h => h.cointype).filter(unique);
-
         this.refreshingPrice = true;
-        setTimeout(() => {
-          this.lastUpdated = (new Date()).toString();
+
+        return coinPrices()
+        .then((prices) => {
           this.refreshingPrice = false;
-          this.$toast.open(`Refresh prices: ${types.join(', ')}`);
-        }, 300);
+          this.lastUpdated = (new Date()).toString();
+
+          const updates = this.holdings.reduce((acc, holding) => {
+            const path = `${holding['.key']}/value`;
+            const coinValue = Math.round(prices[holding.cointype] * holding.count * 100) / 100;
+
+            return Object.assign(acc, {
+              [path]: coinValue,
+            });
+          }, {});
+
+          return this.$firebaseRefs.holdings.update(updates);
+        })
+        .catch((err) => {
+          this.refreshingPrice = false;
+          console.error(err); // eslint-disable-line no-console
+        });
       },
       doOpenAdd() {
         this.addModalOpen = true;

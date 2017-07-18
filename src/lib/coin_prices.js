@@ -3,7 +3,6 @@ import axios from 'axios';
 const client = axios.create({
   baseURL: 'https://us-central1-coinval-e60f1.cloudfunctions.net',
   timeout: 5000,
-  headers: { 'X-Request-Source': 'coinval' },
 });
 
 export default function (currency = 'usd', exchange = 'poloniex') {
