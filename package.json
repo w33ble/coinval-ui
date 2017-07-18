@@ -14,7 +14,8 @@
     "lint": "eslint *.js \"src/**/*.{js,vue}\" \"test/**/*.js\"",
     "lint:fix": "eslint --fix *.js \"src/**/*.{js,vue}\" \"test/**/*.js\"",
     "precommit": "lint-staged",
-    "deploy:functions": "firebase deploy --only functions"
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy": "npm run build && firebase deploy --only hosting"
   },
   "author": [
     "Joe Fleming <github.com/w33ble>"
