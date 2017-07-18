@@ -4,7 +4,7 @@
       v-if="!loading"
       :open="addModalOpen"
       :title="$firebaseValue(dashboard, 'title')"
-      @close="() => { addModalOpen = false; }"
+      @close="() => { addModalOpen = false; fetchPrices(); }"
     />
 
     <div class="columns">
@@ -63,6 +63,14 @@
       DashboardCard,
       AddHoldingModal,
     },
+    mounted() {
+      const interval = 35000; // 35 seconds
+      this.timer = setInterval(this.fetchPrices, interval);
+    },
+    destroyed() {
+      if (this.timer) clearInterval(this.timer);
+      this.timer = null;
+    },
     firebase() {
       const dashboardId = this.$route.params.id;
 
@@ -87,6 +95,7 @@
       };
     },
     data: () => ({
+      timer: null,
       loading: true,
       refreshingPrice: false,
       lastUpdated: null,
