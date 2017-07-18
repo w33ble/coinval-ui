@@ -1,6 +1,5 @@
 import VueRouter from 'vue-router';
 
-import BuefyDemo from './components/BuefyDemo.vue';
 import IndexPrompt from './components/IndexPrompt.vue';
 import CreateDashboard from './components/CreateDashboard.vue';
 import Dashboard from './components/Dashboard.vue';
@@ -10,7 +9,7 @@ const router = new VueRouter({
   routes: [{
     name: 'index',
     path: '/',
-    component: BuefyDemo,
+    redirect: { name: 'load' },
   }, {
     name: 'load',
     path: '/view',
