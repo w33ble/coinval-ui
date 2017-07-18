@@ -13,7 +13,8 @@
     "test": "cross-env NODE_ENV=test ava",
     "lint": "eslint *.js \"src/**/*.{js,vue}\" \"test/**/*.js\"",
     "lint:fix": "eslint --fix *.js \"src/**/*.{js,vue}\" \"test/**/*.js\"",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "deploy:functions": "firebase deploy --only functions"
   },
   "author": [
     "Joe Fleming <github.com/w33ble>"
