@@ -3,8 +3,10 @@
     <add-holding-modal
       v-if="!loading"
       :open="addModalOpen"
+      :holding="modalHolding"
       :title="$firebaseValue(dashboard, 'title')"
-      @close="() => { addModalOpen = false; fetchPrices(); }"
+      @save="() => { addModalOpen = false; fetchPrices(); }"
+      @close="() => { addModalOpen = false; }"
     />
 
     <div class="columns">
@@ -29,7 +31,7 @@
         <!-- all the holdings as cards -->
         <div class="columns is-multiline" v-if="!loading">
           <div class="column is-half" v-for="holding in holdings">
-            <dashboard-card :holding="holding" @edit="doEdit" @delete="doDelete"></dashboard-card>
+            <dashboard-card :holding="holding" @edit="doOpenEdit" @delete="doDelete"></dashboard-card>
           </div>
 
         </div>
@@ -101,6 +103,7 @@
       refreshingPrice: false,
       lastUpdated: null,
       addModalOpen: false,
+      modalHolding: null,
     }),
     methods: {
       fetchPrices() {
@@ -128,10 +131,12 @@
         });
       },
       doOpenAdd() {
+        this.modalHolding = null;
         this.addModalOpen = true;
       },
-      doEdit(holding) {
-        this.$toast.open(`Edit ${holding.title}`);
+      doOpenEdit(holding) {
+        this.modalHolding = holding;
+        this.addModalOpen = true;
       },
       doDelete(holding) {
         this.$toast.open(`Delete ${holding.title}`);

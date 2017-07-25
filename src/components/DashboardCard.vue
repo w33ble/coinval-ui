@@ -4,13 +4,13 @@
       <p class="card-header-title">
         {{ holding.title }} ({{ cointype }})
       </p>
-      <div class="card-header-icon" v-if="false">
+      <div class="card-header-icon">
         <b-dropdown @change="emitAction" is-bottom-left>
           <button class="button" slot="trigger">
             <b-icon icon="angle-down"></b-icon>
           </button>
           <b-dropdown-option value="edit">Edit</b-dropdown-option>
-          <b-dropdown-option value="delete">Delete</b-dropdown-option>
+          <!-- <b-dropdown-option value="delete">Delete</b-dropdown-option> -->
         </b-dropdown>
       </div>
     </header>
