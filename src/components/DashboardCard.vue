@@ -40,7 +40,7 @@
 
 <script>
   export default {
-    name: 'dashboard-card',
+    name: 'DashboardCard',
     props: {
       holding: Object,
     },

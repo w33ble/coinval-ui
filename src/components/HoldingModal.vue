@@ -48,7 +48,7 @@
   import { ref } from '../lib/firebase';
 
   export default {
-    name: 'AddHoldingModal',
+    name: 'HoldingModal',
     firebase() {
       return {
         holdings: ref(`holdings/${this.$route.params.id}`),

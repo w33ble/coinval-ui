@@ -43,7 +43,7 @@
   import guid from '../lib/guid';
 
   export default {
-    name: 'create-dashboard',
+    name: 'CreateDashboard',
     data: () => ({
       title: '',
       isPrivate: false,

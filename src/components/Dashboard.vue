@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <add-holding-modal
+    <HoldingModal
       v-if="!loading"
       :open="addModalOpen"
       :holding="modalHolding"
@@ -31,7 +31,7 @@
         <!-- all the holdings as cards -->
         <div class="columns is-multiline" v-if="!loading">
           <div class="column is-half" v-for="holding in holdings">
-            <dashboard-card :holding="holding" @edit="doOpenEdit" @delete="doDelete"></dashboard-card>
+            <DashboardCard :holding="holding" @edit="doOpenEdit" @delete="doDelete"></DashboardCard>
           </div>
 
         </div>
@@ -57,13 +57,13 @@
   import { ref } from '../lib/firebase';
   import coinPrices from '../lib/coin_prices';
   import DashboardCard from './DashboardCard.vue';
-  import AddHoldingModal from './AddHoldingModal.vue';
+  import HoldingModal from './HoldingModal.vue';
 
   export default {
-    name: 'dashboard',
+    name: 'Dashboard',
     components: {
       DashboardCard,
-      AddHoldingModal,
+      HoldingModal,
     },
     mounted() {
       const interval = 35000; // 35 seconds
