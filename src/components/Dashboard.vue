@@ -26,7 +26,9 @@
         </div>
 
         <!--  Dashboard title -->
-        <h1 class="title is-4" v-if="!loading">{{ $firebaseValue(dashboard, 'title') }}</h1>
+        <h1 class="title is-4 dashboard-title" v-if="!loading" @click="doEditTitle">
+          {{ $firebaseValue(dashboard, 'title') }}
+        </h1>
 
         <!-- all the holdings as cards -->
         <div class="columns is-multiline" v-if="!loading">
@@ -144,6 +146,22 @@
           onConfirm: () => this.$firebaseRefs.holdings.child(holding['.key']).remove(),
         });
       },
+      doEditTitle() {
+        this.$dialog.prompt({
+          title: 'Rename Holding Dashboard',
+          message: 'Enter a new dashboard name',
+          inputMaxlength: 127,
+          confirmText: 'Rename',
+          onConfirm: val => this.$firebaseRefs.dashboard.child('title').set(val),
+        });
+      },
     },
   };
 </script>
+
+<style lang="scss" scoped>
+  .dashboard-title {
+    display: inline-block;
+    cursor: pointer;
+  }
+</style>
