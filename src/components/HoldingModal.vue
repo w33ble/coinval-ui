@@ -8,7 +8,6 @@
         </header>
 
         <section class="modal-card-body">
-          <div>key {{holding && holding['.key']}}</div>
           <b-field label="Holding Name">
             <p class="control">
               <input class="input" type="text" v-model="holdingTitle" autofocus>
