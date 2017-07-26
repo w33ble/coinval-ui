@@ -10,7 +10,7 @@
             <b-icon icon="angle-down"></b-icon>
           </button>
           <b-dropdown-option value="edit">Edit</b-dropdown-option>
-          <!-- <b-dropdown-option value="delete">Delete</b-dropdown-option> -->
+          <b-dropdown-option value="delete">Delete</b-dropdown-option>
         </b-dropdown>
       </div>
     </header>

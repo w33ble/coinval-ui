@@ -139,7 +139,10 @@
         this.addModalOpen = true;
       },
       doDelete(holding) {
-        this.$toast.open(`Delete ${holding.title}`);
+        this.$dialog.confirm({
+          message: 'Are you sure you want to delete this holding?',
+          onConfirm: () => this.$firebaseRefs.holdings.child(holding['.key']).remove(),
+        });
       },
     },
   };
