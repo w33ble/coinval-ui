@@ -28,6 +28,7 @@
         <!--  Dashboard title -->
         <h1 class="title is-4 dashboard-title" v-if="!loading" @click="doEditTitle">
           {{ $firebaseValue(dashboard, 'title') }}
+          <i class="fa fa-pencil edit" />
         </h1>
 
         <!-- all the holdings as cards -->
@@ -163,5 +164,13 @@
   .dashboard-title {
     display: inline-block;
     cursor: pointer;
+
+    .edit {
+      display: none;
+    }
+  }
+
+  .dashboard-title:hover .edit {
+    display: inline-block;
   }
 </style>
