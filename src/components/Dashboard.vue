@@ -1,10 +1,12 @@
 <template>
   <section class="section">
-    <add-holding-modal
+    <HoldingModal
       v-if="!loading"
       :open="addModalOpen"
+      :holding="modalHolding"
       :title="$firebaseValue(dashboard, 'title')"
-      @close="() => { addModalOpen = false; fetchPrices(); }"
+      @save="() => { addModalOpen = false; fetchPrices(); }"
+      @close="() => { addModalOpen = false; }"
     />
 
     <div class="columns">
@@ -29,7 +31,7 @@
         <!-- all the holdings as cards -->
         <div class="columns is-multiline" v-if="!loading">
           <div class="column is-half" v-for="holding in holdings">
-            <dashboard-card :holding="holding" @edit="doEdit" @delete="doDelete"></dashboard-card>
+            <DashboardCard :holding="holding" @edit="doOpenEdit" @delete="doDelete"></DashboardCard>
           </div>
 
         </div>
@@ -55,13 +57,13 @@
   import { ref } from '../lib/firebase';
   import coinPrices from '../lib/coin_prices';
   import DashboardCard from './DashboardCard.vue';
-  import AddHoldingModal from './AddHoldingModal.vue';
+  import HoldingModal from './HoldingModal.vue';
 
   export default {
-    name: 'dashboard',
+    name: 'Dashboard',
     components: {
       DashboardCard,
-      AddHoldingModal,
+      HoldingModal,
     },
     mounted() {
       const interval = 35000; // 35 seconds
@@ -101,6 +103,7 @@
       refreshingPrice: false,
       lastUpdated: null,
       addModalOpen: false,
+      modalHolding: null,
     }),
     methods: {
       fetchPrices() {
@@ -128,13 +131,18 @@
         });
       },
       doOpenAdd() {
+        this.modalHolding = null;
         this.addModalOpen = true;
       },
-      doEdit(holding) {
-        this.$toast.open(`Edit ${holding.title}`);
+      doOpenEdit(holding) {
+        this.modalHolding = holding;
+        this.addModalOpen = true;
       },
       doDelete(holding) {
-        this.$toast.open(`Delete ${holding.title}`);
+        this.$dialog.confirm({
+          message: 'Are you sure you want to delete this holding?',
+          onConfirm: () => this.$firebaseRefs.holdings.child(holding['.key']).remove(),
+        });
       },
     },
   };

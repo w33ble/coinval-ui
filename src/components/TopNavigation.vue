@@ -30,6 +30,6 @@
 
 <script>
   export default {
-    name: 'top-navigation',
+    name: 'TopNavigation',
   };
 </script>

@@ -88,7 +88,7 @@
 
 <script>
   export default {
-    name: 'buefy-demo',
+    name: 'BuefyDemo',
     data: () => ({
       checkbox: true,
       isSwitched: true,
