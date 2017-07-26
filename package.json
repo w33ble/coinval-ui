@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "buefy": "^0.4.2",
+    "buefy": "^0.4.6",
     "firebase": "^4.1.3",
     "font-awesome": "^4.7.0",
     "offline-plugin": "^4.8.0",
